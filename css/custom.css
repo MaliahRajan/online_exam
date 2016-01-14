@@ -1,0 +1,167 @@
+.logo{
+	font-size: 25px !important;
+    height: 50px !important;
+    line-height: 60px !important;
+    width: 50px !important;
+    color: #ffffff !important;
+}
+.customIcon{
+	color: #E0E0E0;
+}
+.forgotPass{
+	margin-right: calc(100% - 50%);
+}
+.mandatory{
+	color: #F44380;
+}
+.custom-msg{
+	font-size: 12px;
+    line-height: 14px;
+    overflow: hidden;
+    padding-top: 5px;
+}
+.confirm{
+	padding: 10px 40px;
+	border-radius: 6px;
+    font-size: 18px;
+    line-height: 1.33333;
+    border: 1px solid transparent;
+}
+.lead{
+	color: #777;
+	font-size: 21px;
+	font-weight: 300;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+.welcome{
+	font-size: 16px;
+    padding-top: 15px;
+}
+.indexNavigate{
+	font-size: 110px;
+    padding: 5px 10px;
+    background: #ffffff;
+    color: #DE3641;
+    border: #ffffff;
+}
+.indexNavigateText{
+	margin-top: 80px;
+}
+.custom-margin-left-30px{
+	margin-left: 30px;
+}
+.custom-margin{
+	padding-top: calc(100% - 90%);
+	padding-bottom: calc(100% - 90%); 
+}
+.logoutBtn{
+	background-color: #FF4081 !important;
+	color: #ffffff !important;
+}
+.questions{
+    padding: 13px 0;
+}
+.hideQuestionMap {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    cursor: pointer;
+    font-size: 15px;
+    padding: 10px;
+    position: absolute;
+    right: 8px;
+    top: 10px;
+}
+.mini-btn {
+	  background: #a3a3a3 none repeat scroll 0 0;
+    border: 1px solid #b8b8b8;
+    border-radius: 50%;
+    color: #ffffff;
+    height: 20px;
+    padding: 5px;
+    width: 20px;
+}
+.questionMap{
+	position: relative;
+	min-height: 56px;
+}
+.home{
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    cursor: pointer;
+    font-size: 21px;
+    left: 8px;
+    padding: 14px;
+    position: absolute;
+    top: 9px;
+    height: 24px;
+}
+.timer{
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    font-size: 0;
+    height: 45px;
+    left: 95px;
+    padding: 3px;
+    position: absolute;
+    top: 9px;
+    width: 80%;
+}
+.timer span span{
+
+    padding: 2px;
+}
+.questionNumbers{
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	margin-bottom: 5px;
+    margin-top: 65px;
+
+}
+.info {
+	display: inline-block;
+    margin-top: 65px;
+    margin-left: 5px;
+}
+.info2{
+	display: inline-block;
+	margin-left: 5px;
+}
+.un-answered{
+	 background-color: rgb(250, 250, 250) !important;
+    color: rgb(33, 33, 33) !important;
+}
+.answered{
+	background-color: #9CC647 !important;
+   color: rgb(255, 255, 255) !important;
+}
+.progress {
+    background-color: #f7f7f7;
+    background-image: linear-gradient(to bottom, #f5f5f5, #f9f9f9);
+    background-repeat: repeat-x;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+    height: 20px;
+    overflow: hidden;
+}
+.progress .bar {
+   background-color: #149bdf;
+   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-size: 40px 40px;
+    background-repeat: repeat-x;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+    box-sizing: border-box;
+    color: #ffffff;
+    float: left;
+    font-size: 12px;
+    height: 100%;
+    text-align: center;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    transition: width 0.6s ease 0s;
+}
+.timeLeft{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.timer timer span{
+    border: 1px dashed #b8b8b8;
+    font-size: 17px;
+    letter-spacing: 3px;
+}
