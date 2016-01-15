@@ -1,8 +1,8 @@
 {literal}
 <div layout="column">
   <div id="xajax_content" layout="row" layout-wrap>
-    <div flex="25"></div>
-    <div flex="50">
+    <div flex="20"></div>
+    <div flex="60">
       <md-card>
         <md-content class="md-padding">
           <div layout="row" layout-wrap>
@@ -153,7 +153,7 @@
         </md-content>
       </md-card>
     </div>
-    <div flex="25"></div>
+    <div flex="20"></div>
   </div>
 </div>
 {/literal}
