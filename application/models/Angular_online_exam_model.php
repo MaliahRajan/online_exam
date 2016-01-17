@@ -152,6 +152,24 @@
 				$duration =  $query->result_array();
 				return $duration[0]['duration'];
 			}
+			public function resultFetch($subject_code,$type_code){
+
+				$resultFetchSql = "SELECT 
+											q.answer 
+								   FROM
+								   			questions q,
+								   			questions_master qm
+								   WHERE
+								   			q.question_code = qm.question_code
+								   AND
+								   			qm.question_type_code = ".$type_code." 
+								   AND
+								   			qm.question_subject_code = ".$subject_code."";
+
+				$query = $this->db->query($resultFetchSql);
+				$result =  $query->result_array();
+				return $result;
+			}
 	}
 
 ?>

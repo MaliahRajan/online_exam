@@ -75,7 +75,7 @@
 			        <div flex="5"></div>
 			       	<div flex="5"><md-button ng-disabled="!(defaultQuestion + 1 <= PracticeQuestionslength)" class="md-raised" ng-click="next()">Next</md-button></div>
 			        <div flex="75"></div>
-			        <div flex="10"><md-button class="md-raised">Final Submit</md-button></div>
+			        <div flex="10"><md-button class="md-raised" ng-click="finished()">Final Submit</md-button></div>
 			    </div>
 			</md-content>
 		</md-card>

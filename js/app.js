@@ -25,7 +25,7 @@ var app = angular.module('app', ['ngMaterial','ngMessages','app.filters','timer'
     });
   });
 
-app.controller('onlineExam',['$scope','$http', function onlineExam($scope,$http) {
+app.controller('onlineExam',['$scope','$http','$mdToast', function onlineExam($scope,$http,$mdToast) {
   
   $scope.login = {username:null,password:null};
 
@@ -40,6 +40,12 @@ app.controller('onlineExam',['$scope','$http', function onlineExam($scope,$http)
   $scope.practiceSessionStart = null;
   
   $scope.timeSpent = null;
+
+  $scope.examSessionStatus = null;
+
+  $scope.examData = new FormData();
+
+  $scope.questionPattern;
 
   $scope.passwordCheck = function(){
     if( $scope.user.password &&  $scope.user.confirmPassword &&  $scope.user.password !==  $scope.user.confirmPassword){
@@ -91,18 +97,17 @@ app.controller('onlineExam',['$scope','$http', function onlineExam($scope,$http)
   $scope.instruction = function(){
     $scope.html = xajax.request( { xjxfun: 'instructions' }, {mode:'synchronous'} );
   }
-
   $scope.practice = function(){
-     $scope.defaultQuestion = 1;    
-     $scope.practiceQestions = xajax.request( { xjxfun: 'questionFetch' }, {mode:'synchronous', parameters:['1', '1']});
-     console.log($scope.practiceQestions);
-     $scope.duration = xajax.request( { xjxfun: 'practice' }, {mode:'synchronous', parameters:['1', '1']});
+     $scope.defaultQuestion = 1;
+     $scope.questionPattern = ['1', '1'];
+     $scope.practiceQestions = xajax.request( { xjxfun: 'questionFetch' }, {mode:'synchronous', parameters:$scope.questionPattern});
+     $scope.duration = xajax.request( { xjxfun: 'practice' }, {mode:'synchronous', parameters:$scope.questionPattern});
      $scope.PracticeQuestionslength = ($scope.practiceQestions).length;
      $http.get('application/views/templates/practice.tpl').success(function(data) {
            $scope.html = data;
-           var d = new Date();
-           $scope.practiceSessionStart = ''+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'';
      });
+     var d = new Date();
+     $scope.practiceSessionStart = ''+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'';
   }
 
 
@@ -111,16 +116,41 @@ app.controller('onlineExam',['$scope','$http', function onlineExam($scope,$http)
       $scope.html = data;
     });
   }
-
+  $scope.finished = function(){
+    $scope.examSessionStatus = 1;
+    var d = new Date();
+    var now = ''+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'';
+    var then  = $scope.practiceSessionStart;
+    $scope.timeSpent = moment.utc(moment(now,"HH:mm:ss").diff(moment(then,"HH:mm:ss"))).format("HH:mm:ss");
+    customAlertMessage('Success.!!','Exam submitted success','success');
+    //form the required exam data
+    $scope.examData['questionPattern'] = $scope.questionPattern;
+    $scope.examData['answerSheet'] = $scope.practiceQestions;
+    $scope.resultFetched = xajax.request( { xjxfun: 'resultFetch' }, {mode:'synchronous', parameters:[$scope.examData]});
+    $http.get('application/views/templates/scoreCard.tpl').success(function(data) {
+      $scope.html = data;
+    });
+  }
   $scope.callbackTimer={};   
   $scope.callbackTimer.finished=function(){
       var d = new Date();
       var now = ''+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'';
       var then  = $scope.practiceSessionStart;
       $scope.timeSpent = moment.utc(moment(now,"HH:mm:ss").diff(moment(then,"HH:mm:ss"))).format("HH:mm:ss");
-      customAlertMessage('Times Up..!!','Exam submitted success','success');
-      $scope.html = 'Time Spent:'+$scope.timeSpent;
-      $scope.$apply();
+      if($scope.examSessionStatus == 1){
+        return;
+      }
+      else{
+          customAlertMessage('Times Up..!!','Exam submitted success','success');
+            //form the required exam data
+          $scope.examData['questionPattern'] = $scope.questionPattern;
+          $scope.examData['answerSheet'] = $scope.practiceQestions;
+          $scope.resultFetched = xajax.request( { xjxfun: 'resultFetch' }, {mode:'synchronous', parameters:[$scope.examData]});
+          $http.get('application/views/templates/scoreCard.tpl').success(function(data) {
+            $scope.html = data;
+          });
+          $scope.$apply();  
+      }
   };
 
 }]);
@@ -158,4 +188,3 @@ function complieAngular(template,div) {
         scope.$digest();
     });
 }
-
