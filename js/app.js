@@ -29,8 +29,21 @@ app.controller('onlineExam',['$scope','$http','$mdToast', function onlineExam($s
   
   $scope.login = {username:null,password:null};
 
-  $scope.user = {name:null,password:null,confirmPassword:null}
+  $scope.user = {name:null,userName:null,password:null,confirmPassword:null,registrationNumber:null,college:null,department:null,year:null,mobile:null,emailId:null,address:null,city:null,state:null};
 
+  $scope.yearList = [{
+                        key: 1,
+                        value: "First Year"
+                      }, {
+                        key: 2,
+                        value: "Second Year"
+                      }, {
+                        key: 3,
+                        value: "Third Year"
+                      }, {
+                        key: 4,
+                        value: "Fourth Year"
+                      }];
   $scope.PracticeQuestionslength;
 
   $scope.practiceQestions;

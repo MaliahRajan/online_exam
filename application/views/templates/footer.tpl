@@ -15,6 +15,7 @@
 <script src="js/angular-animate.min.js"></script>
 <script src="js/angular-aria.min.js"></script>
 <!-- Angular Material Javascript version 0.11.2 used here -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <script src="js/angular-material.min.js"></script>
 <script type="text/javascript" src="js/angular-messages.js"></script>
 <script type="text/javascript" src="js/angular-timer.js"></script>

@@ -77,32 +77,30 @@
                                   <md-input-container class="md-icon-float md-block" flex-gt-sm>
                                     <label>Registration No. <span class="mandatory"> *</span></label>
                                     <md-icon class="customIcon"><i class="fa fa-file-text-o"></i></md-icon>
-                                    <input name="regno" ng-model="user.postalCode" required ng-pattern="/^(0|[1-9][0-9]*)$/">
+                                    <input name="regno" ng-model="user.registrationNumber" required ng-pattern="/^(0|[1-9][0-9]*)$/">
                                     <div ng-messages="userForm.regno.$error" role="alert" multiple>
                                       <div ng-message="pattern" class="my-message">That doesn't look like a valid registration number.
                                       </div>
                                     </div>
                                   </md-input-container>
                                   <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                                    <label>College <span class="mandatory"> *</span></label>
+                                    <md-icon class="customIcon"><i class="fa fa-graduation-cap"></i></md-icon>
+                                    <input ng-model="user.college">
+                                  </md-input-container>
+                                </div>
+                                <div layout-gt-sm="row">
+                                <md-input-container class="md-icon-float md-block" flex-gt-sm>
                                     <label>Department <span class="mandatory"> *</span></label>
                                     <md-icon class="customIcon"><i class="fa fa-graduation-cap"></i></md-icon>
-                                    <input ng-model="user.city">
-                                  </md-input-container>
-                                  <md-input-container class="md-icon-float md-block" flex-gt-sm>
-                                    <label>Year <span class="mandatory"> *</span></label>
-                                    <md-select ng-model="user.state">
-                                      <md-option value="1">First Yr.</md-option>
-                                      <md-option value="2">Second Yr.</md-option>
-                                      <md-option value="3">Third Yr.</md-option>
-                                      <md-option value="4">Final Yr.</md-option>
-                                    </md-select>
+                                    <input ng-model="user.department">
                                   </md-input-container>
                                 </div>
                                 <div layout-gt-sm="row">
                                   <md-input-container class="md-icon-float md-block" flex-gt-sm>
                                     <label>Mobile <span class="mandatory"> *</span></label>
                                     <md-icon class="customIcon"><i class="fa fa-mobile"></i></md-icon>
-                                    <input name="mobile" ng-model="user.firstName"  md-maxlength="10" ng-pattern="/^(0|[1-9][0-9]*)$/" required>
+                                    <input name="mobile" ng-model="user.mobile"  md-maxlength="10" ng-pattern="/^(0|[1-9][0-9]*)$/" required>
                                     <div ng-messages="userForm.mobile.$error" role="alert" multiple>
                                       <div ng-message="pattern" class="my-message">That doesn't look like a valid Mobile number.
                                       </div>
@@ -114,7 +112,7 @@
                                   <md-input-container class="md-icon-float md-block" flex-gt-sm>
                                     <label>Email <span class="mandatory"> *</span></label>
                                     <md-icon class="customIcon"><i class="fa fa-envelope-o"></i></md-icon>
-                                    <input name="email" ng-model="user.email" required ng-pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/">
+                                    <input name="email" ng-model="user.emailId" required ng-pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/">
                                     <div ng-messages="userForm.email.$error" role="alert" multiple>
                                       <div ng-message="pattern">That doesn't look like a valid Email.
                                       </div>
@@ -130,12 +128,12 @@
                                   <md-input-container class="md-icon-float md-block" flex-gt-sm>
                                     <label>City <span class="mandatory"> *</span></label>
                                     <md-icon class="customIcon"><i class="fa fa-map-marker"></i></md-icon>
-                                    <input ng-model="user.firstName">
+                                    <input ng-model="user.city">
                                   </md-input-container>
                                   <md-input-container class="md-icon-float md-block" flex-gt-sm>
                                     <md-icon class="customIcon"><i class="fa fa-map-marker"></i></md-icon>
                                     <label>State <span class="mandatory"> *</span></label>
-                                    <input ng-model="theMax">
+                                    <input ng-model="user.state">
                                   </md-input-container>
                                 </div>
                               </form>
@@ -147,6 +145,13 @@
                       </md-content>
                     </md-tab>
               </md-tabs>
+
+                                                    <md-input-container>
+                    <label>Year</label>
+                    <md-select ng-model="passengerCount" class="custom-select">
+                      <md-option ng-repeat="y in yearList" value="{{y.key}}">{{y.value}}</md-option>
+                    </md-select>
+                  </md-input-container>
             </div>
             <div flex="5"></div>
           </div>
